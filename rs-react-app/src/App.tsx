@@ -1,22 +1,16 @@
 import { Component } from 'react';
+import { Results } from './output/components/Results';
+// import { TopControls } from './searchBlock/components/SearchBlock';
 
-class TopControls extends Component {
+class App extends Component {
   render() {
     return (
-      <section>
-        <h2>Hi, I am a TopControl!</h2>
-        <p>lsls</p>
-      </section>
+      <main className="prose">
+        {/* <TopControls /> */}
+        <Results />
+      </main>
     );
   }
-}
-
-function App() {
-  return (
-    <main className="prose">
-      <TopControls />
-    </main>
-  );
 }
 
 export default App;
