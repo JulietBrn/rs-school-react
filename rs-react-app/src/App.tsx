@@ -1,15 +1,19 @@
 import { Component } from 'react';
-import './App.css';
 
 class TopControls extends Component {
   render() {
-    return <h2>Hi, I am a TopControl!</h2>;
+    return (
+      <section>
+        <h2>Hi, I am a TopControl!</h2>
+        <p>lsls</p>
+      </section>
+    );
   }
 }
 
 function App() {
   return (
-    <main>
+    <main className="prose">
       <TopControls />
     </main>
   );
