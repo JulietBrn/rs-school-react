@@ -1,13 +1,13 @@
 import { Component } from 'react';
 import { Results } from './output/components/Results';
 import { TopControls } from './searchBlock/components/SearchBlock';
-import type { TopControlsProps, TopControlsState } from './types/topControls';
+import type { AppState } from './types/appState';
 
-class App extends Component<TopControlsProps, TopControlsState> {
-  constructor(props: TopControlsProps) {
+class App extends Component<unknown, AppState> {
+  constructor(props: unknown) {
     super(props);
     this.state = {
-      inputValue: props.inputValue || '',
+      inputValue: '',
       data: [],
       error: null,
       isLoading: false,
@@ -35,7 +35,11 @@ class App extends Component<TopControlsProps, TopControlsState> {
       this.setState({ data: data?.results || [data], isLoading: false });
     } catch {
       console.log('Some error occur');
-      this.setState({ error: 'Failed to fetch data', isLoading: false });
+      this.setState({
+        error: 'Failed to fetch data',
+        isLoading: false,
+        data: [],
+      });
     }
   };
 

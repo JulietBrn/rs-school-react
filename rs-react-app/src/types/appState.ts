@@ -1,4 +1,4 @@
-interface TopControlsState {
+interface AppState {
   inputValue: string;
   data: [];
   error?: string | null;
@@ -8,4 +8,4 @@ interface TopControlsProps {
   inputValue: string;
 }
 
-export { type TopControlsState, type TopControlsProps };
+export { type AppState, type TopControlsProps };

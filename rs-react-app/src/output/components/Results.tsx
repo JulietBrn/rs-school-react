@@ -5,7 +5,7 @@ import type { Card, ResultsProps } from '../../types/card';
 class Results extends Component<ResultsProps> {
   render() {
     return (
-      <section>
+      <section className="min-h-100">
         <h2>Results</h2>
         <div className="wrapper">
           {this.props.isLoading && <p>Loading...</p>}
