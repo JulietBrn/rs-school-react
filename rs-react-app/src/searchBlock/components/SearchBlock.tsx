@@ -1,58 +1,54 @@
 import { Component, type MouseEvent } from 'react';
 
-interface TopControlsProps {
+type TopControlsProps = {
+  inputValue?: string;
+  updateInput: (value: string) => void;
+  fetchData: (query: string) => void;
+};
+type TopControlsState = {
   inputValue: string;
-}
-
-interface TopControlsState {
-  inputValue: string;
-  data: [];
-}
+};
 
 class TopControls extends Component<TopControlsProps, TopControlsState> {
   constructor(props: TopControlsProps) {
     super(props);
-    this.handleClick = this.handleClick.bind(this);
-    this.state = { inputValue: 'pikachu', data: [] };
+    this.state = {
+      inputValue: props.inputValue || '',
+    };
   }
 
   componentDidMount() {
-    this.fetchData(this.state.inputValue);
+    this.props.fetchData(this.state.inputValue);
   }
 
-  fetchData = async (inputValue: string) => {
-    try {
-      const response = await fetch(
-        `https://pokeapi.co/api/v2/pokemon/${inputValue}/`
-        // `https://pokeapi.co/api/v2/ability/`
-      );
-      console.log(response);
-      if (!response.ok) throw new Error('Something went wrong');
-
-      const data = await response.json();
-      console.log(data);
-      this.setState({ ...this.state, data });
-    } catch {
-      console.log('Some error occur');
+  componentDidUpdate(prevProps: TopControlsProps) {
+    if (prevProps.inputValue !== this.props.inputValue) {
+      this.setState({ inputValue: this.props.inputValue || '' });
     }
+  }
+
+  updateInput = (val: string) => {
+    this.setState({ inputValue: val });
+    this.props.updateInput(val);
   };
 
-  updateInput(val: string) {
-    this.setState({ ...this.state, inputValue: val });
-  }
-
-  handleClick(e: MouseEvent) {
+  handleClick = (e: MouseEvent) => {
     e.preventDefault();
-  }
+    this.props.fetchData(this.state.inputValue);
+    if (this.state.inputValue) {
+      localStorage.setItem('inputValue', this.state.inputValue);
+    }
+  };
 
   render() {
     return (
       <section>
-        <h2>TopControls!</h2>
+        <h2>Find pokemon!</h2>
         <form className="grid grid-cols-1 sm:grid-cols-2 gap-2">
           <label htmlFor="search">
             <input
               id="search"
+              placeholder="Enter pokemon name"
               type="text"
               value={this.state.inputValue}
               onChange={(e) => this.updateInput(e.target.value.trim())}

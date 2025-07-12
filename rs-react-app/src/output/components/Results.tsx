@@ -1,17 +1,24 @@
 import { Component } from 'react';
 import { CardItem } from './CardItem';
+import type { Card, ResultsProps } from '../../types/card';
 
-class Results extends Component {
+class Results extends Component<ResultsProps> {
   render() {
     return (
       <section>
         <h2>Results</h2>
         <div className="wrapper">
+          {this.props.isLoading && <p>Loading...</p>}
+          {this.props.error && <p>Error: {this.props.error}</p>}
           <ul>
-            <CardItem name="Name" url="Description" />
-            <CardItem name="Card 1" url="https://example.com/card1" />
-            <CardItem name="Card 2" url="https://example.com/card2" />
-            <CardItem name="Card 3" url="https://example.com/card3" />
+            {!this.props.isLoading && !this.props.error && (
+              <p>
+                <strong>Pokemon name</strong> Description
+              </p>
+            )}
+            {this.props.data.map((card: Card, index: number) => {
+              return <CardItem key={index} name={card.name} url={card.url} />;
+            })}
           </ul>
         </div>
       </section>
