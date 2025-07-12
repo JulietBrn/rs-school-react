@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import { Component } from 'react';
 
 class BugCreator extends Component<unknown, { triggerError: boolean }> {
   constructor(props: unknown) {
