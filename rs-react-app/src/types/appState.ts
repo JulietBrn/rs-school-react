@@ -1,6 +1,8 @@
+import type { Card } from './card';
+
 interface AppState {
   inputValue: string;
-  data: [];
+  data: Array<Card>;
   error?: string | null;
   isLoading?: boolean;
 }

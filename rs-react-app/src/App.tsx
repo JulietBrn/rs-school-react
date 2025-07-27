@@ -1,78 +1,72 @@
-import { Component } from 'react';
+import { useCallback, useEffect, useReducer } from 'react';
 import { Results } from './output/components/Results';
 import { TopControls } from './searchBlock/components/SearchBlock';
 import type { AppState } from './types/appState';
+import { reducer } from './reducer';
 
 const BASE_URL = 'https://pokeapi.co/api/v2/pokemon/';
 
-class App extends Component<unknown, AppState> {
-  constructor(props: unknown) {
-    super(props);
-    this.state = {
-      inputValue: '',
-      data: [],
-      error: null,
-      isLoading: false,
-    };
-  }
-
-  updateInput = (val: string) => {
-    this.setState({ inputValue: val });
+function App() {
+  const initialState: AppState = {
+    inputValue: '',
+    data: [],
+    error: null,
+    isLoading: false,
   };
 
-  getUrl = (inputValue: string) => {
+  const [state, dispatch] = useReducer(reducer, initialState);
+
+  function updateInput(value: string) {
+    dispatch({ type: 'UPDATE_INPUT', payload: value });
+  }
+
+  function getUrl(inputValue: string) {
     if (inputValue.trim() === '') {
       return BASE_URL;
     } else {
       return `${BASE_URL}${inputValue}/`;
     }
-  };
+  }
 
-  fetchData = async (inputValue: string) => {
-    this.setState({ isLoading: true, error: null, data: [] });
-    const URL = this.getUrl(inputValue);
+  const fetchData = useCallback(async function fetchData(inputValue: string) {
+    dispatch({ type: 'FETCH_START' });
+    const URL = getUrl(inputValue);
 
     try {
       const response = await fetch(URL);
       if (!response.ok) throw new Error('Something went wrong');
 
       const data = await response.json();
-      this.setState({ data: data?.results || [data], isLoading: false });
+
+      dispatch({ type: 'FETCH_SUCCESS', payload: data?.results || [data] });
     } catch {
       console.log('Some error occur');
-      this.setState({
-        error: 'Failed to fetch data',
-        isLoading: false,
-        data: [],
-      });
+      dispatch({ type: 'FETCH_ERROR', payload: 'Failed to fetch data' });
     }
-  };
+  }, []);
 
-  componentDidMount() {
+  useEffect(() => {
     const savedValue = localStorage.getItem('inputValue');
-    if (savedValue) {
-      this.setState({ inputValue: savedValue }, () => {
-        this.fetchData(savedValue);
-      });
-    }
-  }
+    const initialValue = savedValue || '';
 
-  render() {
-    return (
-      <main className="prose">
-        <TopControls
-          inputValue={this.state.inputValue}
-          updateInput={this.updateInput}
-          fetchData={this.fetchData}
-        />
-        <Results
-          data={this.state.data}
-          isLoading={this.state.isLoading}
-          error={this.state.error}
-        />
-      </main>
-    );
-  }
+    updateInput(initialValue);
+    fetchData(initialValue);
+  }, [fetchData]);
+
+  return (
+    <main className="prose">
+      <TopControls
+        inputValue={state.inputValue}
+        updateInput={updateInput}
+        fetchData={fetchData}
+      />
+      <Results
+        data={state.data}
+        isLoading={state.isLoading}
+        error={state.error}
+      />
+    </main>
+  );
 }
 
 export default App;
