@@ -1,13 +1,13 @@
 import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
 import './index.css';
-import App from './App.tsx';
-import ErrorBoundary from './error/errorBoundary.tsx';
+import App from './App';
+import ErrorBoundary from './error/errorBoundary';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
-import { NotFoundElement } from './pages/NotFoundElement.tsx';
-import { About } from './pages/About.tsx';
-import { Layout } from './parts/Layout.tsx';
-import { BugCreator } from './error/BugCreator.tsx';
+import { NotFoundElement } from './pages/NotFoundElement';
+import { About } from './pages/About';
+import { Layout } from './components/layout/Layout';
+import { BugCreator } from './error/BugCreator';
 
 const router = createBrowserRouter([
   {

@@ -1,4 +1,4 @@
-import type { Card } from './card';
+import type { Card } from '../card';
 
 export type Action =
   | { type: 'UPDATE_INPUT'; payload: string }

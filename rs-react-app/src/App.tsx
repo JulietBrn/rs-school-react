@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useReducer } from 'react';
-import { Results } from './output/components/Results';
-import { TopControls } from './searchBlock/components/SearchBlock';
-import type { AppState } from './types/appState';
+import { Results } from './components/search/Results';
+import { TopControls } from './components/search/SearchBlock';
+import type { AppState } from './types/app/appState';
 import { reducer } from './reducer';
 
 const BASE_URL = 'https://pokeapi.co/api/v2/pokemon/';

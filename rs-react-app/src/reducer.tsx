@@ -1,5 +1,5 @@
-import type { Action } from './types/action';
-import type { AppState } from './types/appState';
+import type { Action } from './types/app/action';
+import type { AppState } from './types/app/appState';
 
 export function reducer(state: AppState, action: Action): AppState {
   switch (action.type) {
