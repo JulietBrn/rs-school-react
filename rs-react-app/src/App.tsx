@@ -3,6 +3,8 @@ import { Results } from './output/components/Results';
 import { TopControls } from './searchBlock/components/SearchBlock';
 import type { AppState } from './types/appState';
 
+const BASE_URL = 'https://pokeapi.co/api/v2/pokemon/';
+
 class App extends Component<unknown, AppState> {
   constructor(props: unknown) {
     super(props);
@@ -18,14 +20,17 @@ class App extends Component<unknown, AppState> {
     this.setState({ inputValue: val });
   };
 
+  getUrl = (inputValue: string) => {
+    if (inputValue.trim() === '') {
+      return BASE_URL;
+    } else {
+      return `${BASE_URL}${inputValue}/`;
+    }
+  };
+
   fetchData = async (inputValue: string) => {
     this.setState({ isLoading: true, error: null, data: [] });
-    let URL;
-    if (inputValue.trim() === '') {
-      URL = 'https://pokeapi.co/api/v2/pokemon/';
-    } else {
-      URL = `https://pokeapi.co/api/v2/pokemon/${inputValue}/`;
-    }
+    const URL = this.getUrl(inputValue);
 
     try {
       const response = await fetch(URL);
