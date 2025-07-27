@@ -12,12 +12,14 @@ function BugCreator() {
   }
 
   return (
-    <button
-      onClick={() => setTriggerError(true)}
-      className="bg-red-500 text-white py-2 px-4 rounded"
-    >
-      Error button
-    </button>
+    <div className="p-4">
+      <button
+        onClick={() => setTriggerError(true)}
+        className="bg-red-500 text-white py-2 px-4 rounded"
+      >
+        Error button
+      </button>
+    </div>
   );
 }
 

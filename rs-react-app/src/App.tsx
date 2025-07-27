@@ -54,7 +54,7 @@ function App() {
   }, [fetchData]);
 
   return (
-    <main className="prose">
+    <>
       <TopControls
         inputValue={state.inputValue}
         updateInput={updateInput}
@@ -65,7 +65,7 @@ function App() {
         isLoading={state.isLoading}
         error={state.error}
       />
-    </main>
+    </>
   );
 }
 

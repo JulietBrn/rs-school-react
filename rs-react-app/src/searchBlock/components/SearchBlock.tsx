@@ -13,7 +13,10 @@ function TopControls(props: TopControlsProps) {
     e.preventDefault();
 
     fetchData(inputValue || '');
-    if (inputValue) {
+
+    if (inputValue === '') {
+      localStorage.removeItem('inputValue');
+    } else if (inputValue) {
       localStorage.setItem('inputValue', inputValue);
     }
   }
