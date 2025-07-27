@@ -8,6 +8,7 @@ import { NotFoundElement } from './pages/NotFoundElement';
 import { About } from './pages/About';
 import { Layout } from './components/layout/Layout';
 import { BugCreator } from './error/BugCreator';
+import { AppProvider } from './context/app/AppContext';
 
 const router = createBrowserRouter([
   {
@@ -24,8 +25,10 @@ const router = createBrowserRouter([
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
     <ErrorBoundary>
-      <RouterProvider router={router} />
-      <BugCreator />
+      <AppProvider>
+        <RouterProvider router={router} />
+        <BugCreator />
+      </AppProvider>
     </ErrorBoundary>
   </StrictMode>
 );

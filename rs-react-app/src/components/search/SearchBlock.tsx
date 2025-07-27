@@ -1,23 +1,18 @@
 import { type MouseEvent } from 'react';
+import { useAppContext } from '../../context/app/useAppContext';
 
-type TopControlsProps = {
-  inputValue?: string;
-  updateInput: (value: string) => void;
-  fetchData: (query: string) => void;
-};
-
-function TopControls(props: TopControlsProps) {
-  const { updateInput, inputValue, fetchData } = props;
+function TopControls() {
+  const { updateInput, state, fetchData } = useAppContext();
 
   function handleClick(e: MouseEvent<HTMLButtonElement>) {
     e.preventDefault();
 
-    fetchData(inputValue || '');
+    fetchData(state.inputValue || '');
 
-    if (inputValue === '') {
+    if (state.inputValue === '') {
       localStorage.removeItem('inputValue');
-    } else if (inputValue) {
-      localStorage.setItem('inputValue', inputValue);
+    } else if (state.inputValue) {
+      localStorage.setItem('inputValue', state.inputValue);
     }
   }
 
@@ -30,7 +25,7 @@ function TopControls(props: TopControlsProps) {
             id="search"
             placeholder="Enter pokemon name"
             type="text"
-            value={inputValue || ''}
+            value={state.inputValue || ''}
             onChange={(e) => updateInput(e.target.value.trim())}
             className="border-2 border-indigo-600 py-1 px-4 min-h-11 w-full"
           />
