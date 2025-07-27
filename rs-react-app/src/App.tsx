@@ -3,17 +3,19 @@ import { Results } from './components/search/Results';
 import { TopControls } from './components/search/SearchBlock';
 import { useAppContext } from './context/app/useAppContext';
 import { DetailsProvider } from './context/details/DetailsContext';
+import { useLocalStorage } from './utils/useLocalStorage';
 
 function App() {
   const { state, updateInput, fetchData } = useAppContext();
 
+  const { storedValue } = useLocalStorage('inputValue');
+
   useEffect(() => {
-    const savedValue = localStorage.getItem('inputValue');
-    const initialValue = savedValue || '';
+    const initialValue = storedValue || '';
 
     updateInput(initialValue);
     fetchData(initialValue);
-  }, [fetchData]);
+  }, [fetchData, storedValue]);
 
   return (
     <>

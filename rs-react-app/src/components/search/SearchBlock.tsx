@@ -1,8 +1,13 @@
 import { type MouseEvent } from 'react';
 import { useAppContext } from '../../context/app/useAppContext';
+import { useLocalStorage } from '../../utils/useLocalStorage';
 
 function TopControls() {
   const { updateInput, state, fetchData } = useAppContext();
+  const { setValue, removeValue } = useLocalStorage(
+    'inputValue',
+    state.inputValue
+  );
 
   function handleClick(e: MouseEvent<HTMLButtonElement>) {
     e.preventDefault();
@@ -10,9 +15,9 @@ function TopControls() {
     fetchData(state.inputValue || '');
 
     if (state.inputValue === '') {
-      localStorage.removeItem('inputValue');
+      removeValue('inputValue');
     } else if (state.inputValue) {
-      localStorage.setItem('inputValue', state.inputValue);
+      setValue(state.inputValue);
     }
   }
 
