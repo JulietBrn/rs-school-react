@@ -1,25 +1,26 @@
-import { Component } from 'react';
+import { useState } from 'react';
 
-class BugCreator extends Component<unknown, { triggerError: boolean }> {
-  constructor(props: unknown) {
-    super(props);
-    this.state = { triggerError: false };
+function BugCreator() {
+  const [triggerError, setTriggerError] = useState(false);
+
+  function throwError() {
+    throw new Error('This is a test error');
   }
 
-  render() {
-    if (this.state.triggerError) {
-      throw new Error('This is a test error');
-    }
+  if (triggerError) {
+    throwError();
+  }
 
-    return (
+  return (
+    <div className="p-4">
       <button
-        onClick={() => this.setState({ triggerError: true })}
+        onClick={() => setTriggerError(true)}
         className="bg-red-500 text-white py-2 px-4 rounded"
       >
         Error button
       </button>
-    );
-  }
+    </div>
+  );
 }
 
 export { BugCreator };

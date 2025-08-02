@@ -1,11 +1,14 @@
-// export type Card = {
-//   name: string;
-//   effect_entries: Array<{ effect: string }>;
-// };
-
 export type Card = {
   name: string;
   url: string;
+  abilities?: ability[];
+};
+
+type ability = {
+  ability: {
+    name: string;
+    url: string;
+  };
 };
 
 export type CardItemArray = Array<Card>;
