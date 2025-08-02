@@ -1,9 +1,10 @@
 import { type MouseEvent } from 'react';
-import { useAppContext } from '../../context/app/useAppContext';
 import { useLocalStorage } from '../../utils/useLocalStorage';
+import { Button } from '../Button';
+import { useAppContext } from '../../context/app/useAppContext';
 
 function TopControls() {
-  const { updateInput, state, fetchData } = useAppContext();
+  const { updateInput, state, fetchDataByName, fetchData } = useAppContext();
   const { setValue, removeValue } = useLocalStorage(
     'inputValue',
     state.inputValue
@@ -12,12 +13,12 @@ function TopControls() {
   function handleClick(e: MouseEvent<HTMLButtonElement>) {
     e.preventDefault();
 
-    fetchData(state.inputValue || '');
-
     if (state.inputValue === '') {
       removeValue('inputValue');
+      fetchData({ page: state.currentPage });
     } else if (state.inputValue) {
       setValue(state.inputValue);
+      fetchDataByName(state.inputValue);
     }
   }
 
@@ -35,12 +36,7 @@ function TopControls() {
             className="border-2 border-indigo-600 py-1 px-4 min-h-11 w-full"
           />
         </label>
-        <button
-          onClick={(e) => handleClick(e)}
-          className="py-2 px-4 bg-indigo-700 text-amber-100 sm:max-w-40 cursor-pointer hover:bg-indigo-800 transition-colors duration-300"
-        >
-          Search
-        </button>
+        <Button onClick={(e) => handleClick(e)}>Search</Button>
       </form>
     </section>
   );

@@ -1,21 +1,21 @@
 import { useEffect } from 'react';
+import { useSearchParams } from 'react-router-dom';
 import { Results } from './components/search/Results';
 import { TopControls } from './components/search/SearchBlock';
-import { useAppContext } from './context/app/useAppContext';
 import { DetailsProvider } from './context/details/DetailsContext';
 import { useLocalStorage } from './utils/useLocalStorage';
+import { useAppContext } from './context/app/useAppContext';
 
 function App() {
   const { state, updateInput, fetchData } = useAppContext();
-
+  const [, setSearchParams] = useSearchParams();
   const { storedValue } = useLocalStorage('inputValue');
 
   useEffect(() => {
-    const initialValue = storedValue || '';
-
-    updateInput(initialValue);
-    fetchData(initialValue);
-  }, [fetchData, storedValue]);
+    updateInput(storedValue);
+    setSearchParams({ page: String(state.currentPage) });
+    fetchData({ page: state.currentPage });
+  }, [state.currentPage]);
 
   return (
     <>

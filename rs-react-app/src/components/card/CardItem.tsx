@@ -2,10 +2,11 @@ import { useDetailsContext } from '../../context/details/useDetailsContext';
 import type { Card } from '../../types/card';
 
 export function CardItem(card: Card) {
-  const { showDetails } = useDetailsContext();
+  const { fetchDetailsCard, showDetails } = useDetailsContext();
 
   function handleItemClick() {
-    showDetails(card);
+    showDetails();
+    fetchDetailsCard(card.url);
   }
 
   return (
