@@ -11,6 +11,8 @@ import { Layout } from './components/layout/Layout';
 import { BugCreator } from './components/error/BugCreator';
 import { AppProvider } from './context/app/AppContext';
 import { ThemeProvider } from './context/theme/ThemeContext';
+import { Provider } from 'react-redux';
+import { store } from './store/store';
 
 const router = createBrowserRouter([
   {
@@ -28,10 +30,12 @@ createRoot(document.getElementById('root')!).render(
   <StrictMode>
     <ErrorBoundary>
       <ThemeProvider>
-        <AppProvider>
-          <RouterProvider router={router} />
-          <BugCreator />
-        </AppProvider>
+        <Provider store={store}>
+          <AppProvider>
+            <RouterProvider router={router} />
+            <BugCreator />
+          </AppProvider>
+        </Provider>
       </ThemeProvider>
     </ErrorBoundary>
   </StrictMode>

@@ -1,7 +1,7 @@
 import { createContext, useCallback, useReducer } from 'react';
 import type { AppState } from '../../types/app/appState';
-import { reducer } from '../../reducer';
 import { useLocalStorage } from '../../utils/useLocalStorage';
+import { reducer } from './reducer';
 
 const BASE_URL = 'https://pokeapi.co/api/v2/pokemon/';
 
