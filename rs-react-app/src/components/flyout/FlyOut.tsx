@@ -12,7 +12,7 @@ export default function FlyOut() {
   const items = useSelector((state: RootState) => state.items.selectedItems);
 
   const defaultClasses =
-    'fixed bg-gray-100 dark:bg-gray-800 shadow-lg p-4 bottom-0 right-0 opacity-0 transition-opacity duration-300 z-50 flex flex-col md:flex-row gap-2 justify-between w-full invisible';
+    'fixed bg-gray-100 dark:bg-gray-800 shadow-lg p-4 bottom-0 right-0 opacity-0 transition-opacity duration-300 z-50 flex flex-col sm:flex-row gap-2 justify-between w-full invisible';
 
   const visibilityClasses = 'opacity-100 visible ';
 

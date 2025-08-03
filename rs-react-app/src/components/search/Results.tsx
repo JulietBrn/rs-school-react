@@ -15,7 +15,7 @@ function Results(props: ResultsProps) {
   const isItemSingle = data.length === 1;
 
   return (
-    <div className="min-h-90 grid grid-cols-2  gap-4  ">
+    <div className="min-h-90 grid md:grid-cols-2  gap-4  ">
       <section>
         <h2 className="dark:text-white">Results</h2>
         <div className="wrapper">
