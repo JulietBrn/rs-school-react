@@ -5,6 +5,7 @@ import { TopControls } from './components/search/SearchBlock';
 import { DetailsProvider } from './context/details/DetailsContext';
 import { useLocalStorage } from './utils/useLocalStorage';
 import { useAppContext } from './context/app/useAppContext';
+import FlyOut from './components/flyout/FlyOut';
 
 function App() {
   const { state, updateInput, fetchData } = useAppContext();
@@ -26,6 +27,7 @@ function App() {
           isLoading={state.isLoading}
           error={state.error}
         />
+        <FlyOut />
       </DetailsProvider>
     </>
   );

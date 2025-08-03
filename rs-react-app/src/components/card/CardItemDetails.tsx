@@ -1,6 +1,6 @@
 import { useDetailsContext } from '../../context/details/useDetailsContext';
-import { ErrorElement } from '../ErrorElement';
-import { Loading } from '../LoadingElement';
+import { ErrorElement } from '../helpers/ErrorElement';
+import { Loading } from '../helpers/LoadingElement';
 
 export default function CardItemDetails() {
   const { hideDetails, selectedCard, isLoading, error } = useDetailsContext();
@@ -8,7 +8,7 @@ export default function CardItemDetails() {
   return (
     <section>
       <div className="sticky top-6">
-        <h2>Details</h2>
+        <h2 className="dark:text-white">Details</h2>
         <div className="wrapper">
           {isLoading && <Loading />}
           {error && <ErrorElement message={error} />}
@@ -19,22 +19,26 @@ export default function CardItemDetails() {
             {' '}
             <button
               title="Close details"
-              className="bg-pink-300 py-1 px-2 cursor-pointer"
+              className="bg-pink-300 dark:bg-pink-600  py-1 px-2 cursor-pointer"
               onClick={() => hideDetails()}
             >
               X
             </button>
             <div>
-              <strong>Pokemon:</strong> {selectedCard?.name}
+              <strong className="dark:text-white">Pokemon:</strong>{' '}
+              {selectedCard?.name}
             </div>
             <div>
               <div>
-                <strong>Pokemon Abilities:</strong>
+                <strong className="dark:text-white">Pokemon Abilities:</strong>
               </div>
               {selectedCard?.abilities?.map((ability, index) => (
                 <div key={index}>
-                  → <strong>{ability.ability.name}</strong>:{' '}
-                  {ability.ability.url}
+                  →{' '}
+                  <strong className="dark:text-white">
+                    {ability.ability.name}
+                  </strong>
+                  : {ability.ability.url}
                 </div>
               ))}
             </div>

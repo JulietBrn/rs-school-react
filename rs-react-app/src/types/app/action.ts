@@ -1,6 +1,6 @@
 import type { Card } from '../card';
 
-export type Action =
+type Action =
   | { type: 'UPDATE_INPUT'; payload: string }
   | { type: 'FETCH_START' }
   | { type: 'FETCH_DETAILS'; payload: string }
@@ -13,3 +13,5 @@ export type Action =
   | { type: 'SET_COUNT'; payload: number }
   | { type: 'SET_CURRENT_PAGE'; payload: number }
   | { type: 'FETCH_DETAILS_SUCCESS'; payload: Card };
+
+export type { Action };

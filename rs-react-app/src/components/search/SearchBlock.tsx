@@ -1,6 +1,6 @@
 import { type MouseEvent } from 'react';
 import { useLocalStorage } from '../../utils/useLocalStorage';
-import { Button } from '../Button';
+import { Button } from '../button/Button';
 import { useAppContext } from '../../context/app/useAppContext';
 
 function TopControls() {
@@ -24,7 +24,7 @@ function TopControls() {
 
   return (
     <section>
-      <h2>Find a pokemon!</h2>
+      <h2 className="dark:text-white">Find a pokemon!</h2>
       <form className="grid grid-cols-1 sm:grid-cols-2 gap-2">
         <label htmlFor="search">
           <input

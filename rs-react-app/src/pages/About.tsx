@@ -19,6 +19,7 @@ export function About() {
           to="https://rs.school/courses/reactjs"
           target="_blank"
           rel="noopener noreferrer"
+          className="text-blue-500 hover:underline"
         >
           RS School React course
         </Link>
