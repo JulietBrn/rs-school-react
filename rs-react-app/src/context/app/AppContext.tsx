@@ -2,8 +2,7 @@ import { createContext, useCallback, useReducer } from 'react';
 import type { AppState } from '../../types/app/appState';
 import { useLocalStorage } from '../../utils/useLocalStorage';
 import { reducer } from './reducer';
-
-const BASE_URL = 'https://pokeapi.co/api/v2/pokemon/';
+import { BASE_URL, COUNT_PER_PAGE } from './constants';
 
 const getInitialPage = () => {
   const fromStorage = localStorage.getItem('page');
@@ -16,7 +15,7 @@ const initialState: AppState = {
   prevLink: null,
   nextLink: null,
   currentPage: getInitialPage(),
-  countPerPage: 20,
+  countPerPage: COUNT_PER_PAGE,
   count: 0,
   error: null,
   isLoading: false,
@@ -44,7 +43,6 @@ const AppProvider = ({ children }: { children: React.ReactNode }) => {
   const { setValue } = useLocalStorage('page', `${state.currentPage}`);
 
   function getUrl(params: Params) {
-    console.log('Current page:', params.page);
     return `${BASE_URL}?offset=${(params.page - 1) * 20}&limit=20`;
   }
 
@@ -91,9 +89,7 @@ const AppProvider = ({ children }: { children: React.ReactNode }) => {
       dispatch({ type: 'FETCH_SUCCESS', payload: data.results });
       setLinks(data.previous, data.next);
       setCount(data.count || 0);
-      console.log('Data fetched successfully:', data);
     } catch {
-      console.log('Some error occur');
       dispatch({ type: 'FETCH_ERROR', payload: 'Failed to fetch data' });
     }
   }, []);
@@ -112,9 +108,7 @@ const AppProvider = ({ children }: { children: React.ReactNode }) => {
       dispatch({ type: 'FETCH_SUCCESS', payload: [data] });
       setLinks(null, null);
       setCount(1);
-      console.log('Data fetched successfully:', data);
     } catch {
-      console.log('Some error occur');
       dispatch({ type: 'FETCH_ERROR', payload: 'Failed to fetch data' });
     }
   }, []);

@@ -4,7 +4,7 @@ import type { itemsState } from '../types/app/itemsState';
 
 const initialState: itemsState = {
   selectedItems: [],
-  selectedItemsLenght: 0,
+  selectedItemsLength: 0,
 };
 
 const itemsSlice = createSlice({
@@ -25,11 +25,11 @@ const itemsSlice = createSlice({
       } else {
         state.selectedItems.push(item);
       }
-      state.selectedItemsLenght = state.selectedItems.length;
+      state.selectedItemsLength = state.selectedItems.length;
     },
     unselectAll: (state) => {
       state.selectedItems = [];
-      state.selectedItemsLenght = 0;
+      state.selectedItemsLength = 0;
     },
   },
 });
