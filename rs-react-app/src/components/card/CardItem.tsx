@@ -12,9 +12,9 @@ export function CardItem(card: Card) {
   return (
     <li
       onClick={handleItemClick}
-      className="hover:bg-gray-100 p-2 cursor-pointer"
+      className="hover:bg-gray-100 dark:hover:bg-gray-800 p-2 cursor-pointer"
     >
-      <strong>{card.name}: </strong>
+      <strong className="dark:text-white">{card.name}: </strong>
       {card?.url || `Description for ${card.name} not available`}
     </li>
   );

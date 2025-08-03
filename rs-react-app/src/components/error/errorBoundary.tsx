@@ -25,8 +25,8 @@ class ErrorBoundary extends Component<ErrorBoundaryProps, ErrorBoundaryState> {
   render() {
     if (this.state.hasError) {
       return (
-        <div className="p-4 bg-red-100 text-red-800 rounded">
-          <h2>Something went wrong.</h2>
+        <div className="p-4 bg-red-100 text-red-800 rounded dark:bg-red-900 dark:text-red-200">
+          <h2 className="dark:text-white">Something went wrong.</h2>
           <p>Please try refreshing the page.</p>
         </div>
       );
