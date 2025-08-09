@@ -32,7 +32,7 @@ export default function FlyOut() {
   }
 
   return (
-    <div className={className}>
+    <div id="flyout" className={className}>
       <Button onClick={() => dispatch(unselectAll())}>Unselect All</Button>
       <div>{itemsLength} items are selected</div>
 

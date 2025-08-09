@@ -1,11 +1,11 @@
-import { CardItem } from '../card/CardItem';
-import type { Card, ResultsProps } from '../../types/card';
+import type { ResultsProps } from '../../types/card';
 import CardItemDetails from '../card/CardItemDetails';
 import { Button } from '../button/Button';
 import { Loading } from '../helpers/LoadingElement';
 import { ErrorElement } from '../helpers/ErrorElement';
 import { useDetailsContext } from '../../context/details/useDetailsContext';
 import { useAppContext } from '../../context/app/useAppContext';
+import CardList from './CardList';
 
 function Results(props: ResultsProps) {
   const { data, isLoading, error } = props;
@@ -21,18 +21,7 @@ function Results(props: ResultsProps) {
         <div className="wrapper">
           {isLoading && <Loading />}
           {error && <ErrorElement message={error} />}
-          <ul className="grid xl:grid-cols-2">
-            {data.map((card: Card, index: number) => {
-              return (
-                <CardItem
-                  key={index}
-                  name={card.name}
-                  url={card.url}
-                  abilities={card.abilities}
-                />
-              );
-            })}
-          </ul>
+          <CardList data={data} />
         </div>
         {!isItemSingle && (
           <div className="buttons-wrap">
