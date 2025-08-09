@@ -29,7 +29,5 @@ describe('About', () => {
 
     const heading = screen.getByRole('heading', { name: /about/i });
     expect(heading).toBeInTheDocument();
-    // const link = screen.getByRole('link', { name: /home/i });
-    // expect(link).toHaveAttribute('href', '/');
   });
 });

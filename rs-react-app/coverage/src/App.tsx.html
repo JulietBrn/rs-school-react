@@ -23,9 +23,9 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">29.03% </span>
+                <span class="strong">34.61% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>9/31</span>
+                <span class='fraction'>9/26</span>
             </div>
         
             
@@ -44,9 +44,9 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">29.03% </span>
+                <span class="strong">34.61% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>9/31</span>
+                <span class='fraction'>9/26</span>
             </div>
         
             
@@ -95,11 +95,7 @@
 <a name='L30'></a><a href='#L30'>30</a>
 <a name='L31'></a><a href='#L31'>31</a>
 <a name='L32'></a><a href='#L32'>32</a>
-<a name='L33'></a><a href='#L33'>33</a>
-<a name='L34'></a><a href='#L34'>34</a>
-<a name='L35'></a><a href='#L35'>35</a>
-<a name='L36'></a><a href='#L36'>36</a>
-<a name='L37'></a><a href='#L37'>37</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<a name='L33'></a><a href='#L33'>33</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -111,18 +107,14 @@
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -141,29 +133,25 @@ import { Results } from './components/search/Results';
 import { TopControls } from './components/search/SearchBlock';
 import { DetailsProvider } from './context/details/DetailsContext';
 import { useLocalStorage } from './utils/useLocalStorage';
-import { useAppContext } from './context/app/useAppContext';
 import FlyOut from './components/flyout/FlyOut';
+import { useAppContext } from './context/app/useAppContext';
 &nbsp;
 <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >function App() {</span></span>
-<span class="cstat-no" title="statement not covered" >  const { state, updateInput, fetchData } = useAppContext();</span>
+<span class="cstat-no" title="statement not covered" >  const { state, updateInput } = useAppContext();</span>
 <span class="cstat-no" title="statement not covered" >  const [, setSearchParams] = useSearchParams();</span>
+&nbsp;
 <span class="cstat-no" title="statement not covered" >  const { storedValue } = useLocalStorage('inputValue');</span>
 &nbsp;
 <span class="cstat-no" title="statement not covered" >  useEffect(() =&gt; {</span>
 <span class="cstat-no" title="statement not covered" >    updateInput(storedValue);</span>
 <span class="cstat-no" title="statement not covered" >    setSearchParams({ page: String(state.currentPage) });</span>
-<span class="cstat-no" title="statement not covered" >    fetchData({ page: state.currentPage });</span>
 <span class="cstat-no" title="statement not covered" >  }, [state.currentPage]);</span>
 &nbsp;
 <span class="cstat-no" title="statement not covered" >  return (</span>
 <span class="cstat-no" title="statement not covered" >    &lt;&gt;</span>
 <span class="cstat-no" title="statement not covered" >      &lt;TopControls /&gt;</span>
 <span class="cstat-no" title="statement not covered" >      &lt;DetailsProvider&gt;</span>
-<span class="cstat-no" title="statement not covered" >        &lt;Results</span>
-<span class="cstat-no" title="statement not covered" >          data={state.data}</span>
-<span class="cstat-no" title="statement not covered" >          isLoading={state.isLoading}</span>
-<span class="cstat-no" title="statement not covered" >          error={state.error}</span>
-<span class="cstat-no" title="statement not covered" >        /&gt;</span>
+<span class="cstat-no" title="statement not covered" >        &lt;Results /&gt;</span>
 <span class="cstat-no" title="statement not covered" >        &lt;FlyOut /&gt;</span>
 <span class="cstat-no" title="statement not covered" >      &lt;/DetailsProvider&gt;</span>
 <span class="cstat-no" title="statement not covered" >    &lt;/&gt;</span>
@@ -178,7 +166,7 @@ export default App;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2025-08-09T13:19:41.319Z
+                at 2025-08-09T17:34:00.158Z
             </div>
         <script src="../prettify.js"></script>
         <script>

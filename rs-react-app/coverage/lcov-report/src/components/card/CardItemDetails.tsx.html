@@ -23,9 +23,9 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">6.81% </span>
+                <span class="strong">8.88% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>3/44</span>
+                <span class='fraction'>4/45</span>
             </div>
         
             
@@ -44,9 +44,9 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">6.81% </span>
+                <span class="strong">8.88% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>3/44</span>
+                <span class='fraction'>4/45</span>
             </div>
         
             
@@ -113,18 +113,12 @@
 <a name='L48'></a><a href='#L48'>48</a>
 <a name='L49'></a><a href='#L49'>49</a>
 <a name='L50'></a><a href='#L50'>50</a>
-<a name='L51'></a><a href='#L51'>51</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<a name='L51'></a><a href='#L51'>51</a>
+<a name='L52'></a><a href='#L52'>52</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -139,6 +133,14 @@
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -164,11 +166,13 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import { useDetailsContext } from '../../context/details/useDetailsContext';
+import { useGetItemByNameQuery } from '../../services/api';
 import { ErrorElement } from '../helpers/ErrorElement';
 import { Loading } from '../helpers/LoadingElement';
 &nbsp;
 <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >export default function CardItemDetails() {</span></span>
-<span class="cstat-no" title="statement not covered" >  const { hideDetails, selectedCard, isLoading, error } = useDetailsContext();</span>
+<span class="cstat-no" title="statement not covered" >  const { hideDetails, currentName } = useDetailsContext();</span>
+<span class="cstat-no" title="statement not covered" >  const { data, error, isLoading } = useGetItemByNameQuery(currentName);</span>
 &nbsp;
 <span class="cstat-no" title="statement not covered" >  return (</span>
 <span class="cstat-no" title="statement not covered" >    &lt;section&gt;</span>
@@ -176,10 +180,10 @@ import { Loading } from '../helpers/LoadingElement';
 <span class="cstat-no" title="statement not covered" >        &lt;h2 className="dark:text-white"&gt;Details&lt;/h2&gt;</span>
 <span class="cstat-no" title="statement not covered" >        &lt;div className="wrapper"&gt;</span>
 <span class="cstat-no" title="statement not covered" >          {isLoading &amp;&amp; &lt;Loading /&gt;}</span>
-<span class="cstat-no" title="statement not covered" >          {error &amp;&amp; &lt;ErrorElement message={error} /&gt;}</span>
+<span class="cstat-no" title="statement not covered" >          {error &amp;&amp; &lt;ErrorElement error={error} /&gt;}</span>
 <span class="cstat-no" title="statement not covered" >        &lt;/div&gt;</span>
 &nbsp;
-<span class="cstat-no" title="statement not covered" >        {selectedCard &amp;&amp; (</span>
+<span class="cstat-no" title="statement not covered" >        {data &amp;&amp; (</span>
 <span class="cstat-no" title="statement not covered" >          &lt;div&gt;</span>
 <span class="cstat-no" title="statement not covered" >            {' '}</span>
 <span class="cstat-no" title="statement not covered" >            &lt;button</span>
@@ -190,14 +194,13 @@ import { Loading } from '../helpers/LoadingElement';
               X
 <span class="cstat-no" title="statement not covered" >            &lt;/button&gt;</span>
 <span class="cstat-no" title="statement not covered" >            &lt;div&gt;</span>
-<span class="cstat-no" title="statement not covered" >              &lt;strong className="dark:text-white"&gt;Pokemon:&lt;/strong&gt;{' '}</span>
-<span class="cstat-no" title="statement not covered" >              {selectedCard?.name}</span>
+<span class="cstat-no" title="statement not covered" >              &lt;strong className="dark:text-white"&gt;Pokemon:&lt;/strong&gt; {data?.name}</span>
 <span class="cstat-no" title="statement not covered" >            &lt;/div&gt;</span>
 <span class="cstat-no" title="statement not covered" >            &lt;div&gt;</span>
 <span class="cstat-no" title="statement not covered" >              &lt;div&gt;</span>
 <span class="cstat-no" title="statement not covered" >                &lt;strong className="dark:text-white"&gt;Pokemon Abilities:&lt;/strong&gt;</span>
 <span class="cstat-no" title="statement not covered" >              &lt;/div&gt;</span>
-<span class="cstat-no" title="statement not covered" >              {selectedCard?.abilities?.map((ability, index) =&gt; (</span>
+<span class="cstat-no" title="statement not covered" >              {data?.abilities?.map((ability, index) =&gt; (</span>
 <span class="cstat-no" title="statement not covered" >                &lt;div key={index}&gt;</span>
 <span class="cstat-no" title="statement not covered" >                  →{' '}</span>
 <span class="cstat-no" title="statement not covered" >                  &lt;strong className="dark:text-white"&gt;</span>
@@ -220,7 +223,7 @@ import { Loading } from '../helpers/LoadingElement';
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2025-08-09T13:19:41.420Z
+                at 2025-08-09T17:34:00.265Z
             </div>
         <script src="../../../prettify.js"></script>
         <script>

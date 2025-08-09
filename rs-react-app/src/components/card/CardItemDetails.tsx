@@ -1,9 +1,11 @@
 import { useDetailsContext } from '../../context/details/useDetailsContext';
+import { useGetItemByNameQuery } from '../../services/api';
 import { ErrorElement } from '../helpers/ErrorElement';
 import { Loading } from '../helpers/LoadingElement';
 
 export default function CardItemDetails() {
-  const { hideDetails, selectedCard, isLoading, error } = useDetailsContext();
+  const { hideDetails, currentName } = useDetailsContext();
+  const { data, error, isLoading } = useGetItemByNameQuery(currentName);
 
   return (
     <section>
@@ -11,10 +13,10 @@ export default function CardItemDetails() {
         <h2 className="dark:text-white">Details</h2>
         <div className="wrapper">
           {isLoading && <Loading />}
-          {error && <ErrorElement message={error} />}
+          {error && <ErrorElement error={error} />}
         </div>
 
-        {selectedCard && (
+        {data && (
           <div>
             {' '}
             <button
@@ -25,14 +27,13 @@ export default function CardItemDetails() {
               X
             </button>
             <div>
-              <strong className="dark:text-white">Pokemon:</strong>{' '}
-              {selectedCard?.name}
+              <strong className="dark:text-white">Pokemon:</strong> {data?.name}
             </div>
             <div>
               <div>
                 <strong className="dark:text-white">Pokemon Abilities:</strong>
               </div>
-              {selectedCard?.abilities?.map((ability, index) => (
+              {data?.abilities?.map((ability, index) => (
                 <div key={index}>
                   →{' '}
                   <strong className="dark:text-white">

@@ -4,7 +4,7 @@ import { Button } from '../button/Button';
 import { useAppContext } from '../../context/app/useAppContext';
 
 function TopControls() {
-  const { updateInput, state, fetchDataByName, fetchData } = useAppContext();
+  const { updateInput, state, setSearchTerm } = useAppContext();
   const { setValue, removeValue } = useLocalStorage(
     'inputValue',
     state.inputValue
@@ -15,10 +15,10 @@ function TopControls() {
 
     if (state.inputValue === '') {
       removeValue('inputValue');
-      fetchData({ page: state.currentPage });
+      setSearchTerm('');
     } else if (state.inputValue) {
       setValue(state.inputValue);
-      fetchDataByName(state.inputValue);
+      setSearchTerm(state.inputValue);
     }
   }
 

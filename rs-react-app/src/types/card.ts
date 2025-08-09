@@ -12,9 +12,3 @@ type ability = {
 };
 
 export type CardItemArray = Array<Card>;
-
-export type ResultsProps = {
-  data: Array<Card>;
-  isLoading?: boolean;
-  error?: string | null;
-};
