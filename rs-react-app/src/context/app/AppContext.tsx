@@ -10,7 +10,6 @@ const getInitialPage = () => {
 };
 
 const initialState: AppState = {
-  inputValue: '',
   prevLink: null,
   nextLink: null,
   currentPage: getInitialPage(),
@@ -20,7 +19,6 @@ const initialState: AppState = {
 
 interface AppContextProps {
   state: AppState;
-  updateInput: (value: string) => void;
   handleNextClick: () => void;
   handlePrevClick: () => void;
   setPage: (page: number) => void;
@@ -36,10 +34,6 @@ const AppProvider = ({ children }: { children: React.ReactNode }) => {
   const [state, dispatch] = useReducer(reducer, initialState);
   const [searchTerm, setSearchTerm] = useState('');
   const { setValue } = useLocalStorage('page', `${state.currentPage}`);
-
-  function updateInput(value: string) {
-    dispatch({ type: 'UPDATE_INPUT', payload: value });
-  }
 
   function setLinks(prevLink: string | null, nextLink: string | null) {
     dispatch({ type: 'SET_LINKS', payload: { prevLink, nextLink } });
@@ -69,7 +63,6 @@ const AppProvider = ({ children }: { children: React.ReactNode }) => {
     <AppContext.Provider
       value={{
         state,
-        updateInput,
         handleNextClick,
         handlePrevClick,
         setPage,

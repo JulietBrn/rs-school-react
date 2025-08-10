@@ -16,7 +16,7 @@ export default function CardItemDetails() {
           {error && <ErrorElement error={error} />}
         </div>
 
-        {data && (
+        {data && !isLoading && (
           <div>
             {' '}
             <button

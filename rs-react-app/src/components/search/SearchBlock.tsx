@@ -4,21 +4,29 @@ import { Button } from '../button/Button';
 import { useAppContext } from '../../context/app/useAppContext';
 
 function TopControls() {
-  const { updateInput, state, setSearchTerm } = useAppContext();
-  const { setValue, removeValue } = useLocalStorage(
+  const { setSearchTerm } = useAppContext();
+
+  const { storedValue, setValue, removeValue } = useLocalStorage(
     'inputValue',
-    state.inputValue
+    ''
   );
 
   function handleClick(e: MouseEvent<HTMLButtonElement>) {
     e.preventDefault();
 
-    if (state.inputValue === '') {
+    if (storedValue === '') {
       removeValue('inputValue');
       setSearchTerm('');
-    } else if (state.inputValue) {
-      setValue(state.inputValue);
-      setSearchTerm(state.inputValue);
+    } else if (storedValue) {
+      setSearchTerm(storedValue);
+    }
+  }
+
+  function updateInput(value: string) {
+    setValue(value);
+
+    if (value.trim() === '') {
+      setSearchTerm('');
     }
   }
 
@@ -31,7 +39,7 @@ function TopControls() {
             id="search"
             placeholder="Enter pokemon name"
             type="text"
-            value={state.inputValue || ''}
+            value={storedValue}
             onChange={(e) => updateInput(e.target.value.trim())}
             className="border-2 border-indigo-600 py-1 px-4 min-h-11 w-full"
           />

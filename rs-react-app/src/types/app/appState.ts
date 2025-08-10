@@ -1,5 +1,4 @@
 interface AppState {
-  inputValue: string;
   prevLink?: string | null;
   nextLink?: string | null;
   currentPage: number;

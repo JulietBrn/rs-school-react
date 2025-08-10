@@ -3,8 +3,6 @@ import type { AppState } from '../../types/app/appState';
 
 export function reducer(state: AppState, action: Action): AppState {
   switch (action.type) {
-    case 'UPDATE_INPUT':
-      return { ...state, inputValue: action.payload };
     case 'SET_LINKS':
       return {
         ...state,
