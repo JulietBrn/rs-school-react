@@ -23,30 +23,30 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">100% </span>
+                <span class="strong">6.66% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>15/15</span>
+                <span class='fraction'>1/15</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>2/2</span>
+                <span class='fraction'>0/0</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">100% </span>
+                <span class="strong">0% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>1/1</span>
+                <span class='fraction'>0/1</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">100% </span>
+                <span class="strong">6.66% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>15/15</span>
+                <span class='fraction'>1/15</span>
             </div>
         
             
@@ -61,7 +61,7 @@
             </div>
         </template>
     </div>
-    <div class='status-line high'></div>
+    <div class='status-line low'></div>
     <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -85,41 +85,41 @@
 <a name='L20'></a><a href='#L20'>20</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import type { Card } from '../../types/card';
 import { CardItem } from '../card/CardItem';
 &nbsp;
-export default function CardList({ data }: { data: Card[] }) {
-  return (
-    &lt;ul className="grid xl:grid-cols-2"&gt;
-      {data.map((card: Card, index: number) =&gt; {
-        return (
-          &lt;CardItem
-            key={index}
-            name={card.name}
-            url={card.url}
-            abilities={card.abilities}
-          /&gt;
+<span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >export default function CardList({ data }: { data: Card[] }) {</span></span>
+<span class="cstat-no" title="statement not covered" >  return (</span>
+<span class="cstat-no" title="statement not covered" >    &lt;ul className="grid xl:grid-cols-2"&gt;</span>
+<span class="cstat-no" title="statement not covered" >      {data.map((card: Card, index: number) =&gt; {</span>
+<span class="cstat-no" title="statement not covered" >        return (</span>
+<span class="cstat-no" title="statement not covered" >          &lt;CardItem</span>
+<span class="cstat-no" title="statement not covered" >            key={index}</span>
+<span class="cstat-no" title="statement not covered" >            name={card.name}</span>
+<span class="cstat-no" title="statement not covered" >            url={card.url}</span>
+<span class="cstat-no" title="statement not covered" >            abilities={card.abilities}</span>
+<span class="cstat-no" title="statement not covered" >          /&gt;</span>
         );
-      })}
-    &lt;/ul&gt;
+<span class="cstat-no" title="statement not covered" >      })}</span>
+<span class="cstat-no" title="statement not covered" >    &lt;/ul&gt;</span>
   );
-}
+<span class="cstat-no" title="statement not covered" >}</span>
 &nbsp;</pre></td></tr></table></pre>
 
                 <div class='push'></div><!-- for sticky footer -->
@@ -127,7 +127,7 @@ export default function CardList({ data }: { data: Card[] }) {
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2025-08-09T17:34:00.158Z
+                at 2025-08-10T10:25:49.298Z
             </div>
         <script src="../../../prettify.js"></script>
         <script>

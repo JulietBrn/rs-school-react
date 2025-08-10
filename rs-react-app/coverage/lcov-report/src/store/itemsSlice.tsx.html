@@ -23,30 +23,30 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">100% </span>
+                <span class="strong">48.38% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>31/31</span>
+                <span class='fraction'>15/31</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>8/8</span>
+                <span class='fraction'>0/0</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">100% </span>
+                <span class="strong">0% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>2/2</span>
+                <span class='fraction'>0/2</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">100% </span>
+                <span class="strong">48.38% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>31/31</span>
+                <span class='fraction'>15/31</span>
             </div>
         
             
@@ -61,7 +61,7 @@
             </div>
         </template>
     </div>
-    <div class='status-line high'></div>
+    <div class='status-line low'></div>
     <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -115,25 +115,25 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">6x</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">6x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">6x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">6x</span>
-<span class="cline-any cline-yes">5x</span>
-<span class="cline-any cline-yes">5x</span>
-<span class="cline-any cline-yes">6x</span>
-<span class="cline-any cline-yes">6x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -152,26 +152,26 @@ const itemsSlice = createSlice({
   name: 'items',
   initialState,
   reducers: {
-    toggleSelect: (state, action: PayloadAction&lt;Card&gt;) =&gt; {
-      const item = action.payload;
+    toggleSelect: <span class="fstat-no" title="function not covered" >(state, action: PayloadAction&lt;Card&gt;) =&gt; {</span>
+<span class="cstat-no" title="statement not covered" >      const item = action.payload;</span>
 &nbsp;
-      const isItemSelected = state.selectedItems.length
-        ? state.selectedItems.some((i) =&gt; i.name === item.name)
-        : false;
+<span class="cstat-no" title="statement not covered" >      const isItemSelected = state.selectedItems.length</span>
+<span class="cstat-no" title="statement not covered" >        ? state.selectedItems.some((i) =&gt; i.name === item.name)</span>
+<span class="cstat-no" title="statement not covered" >        : false;</span>
 &nbsp;
-      if (isItemSelected) {
-        state.selectedItems = state.selectedItems.filter(
-          (i) =&gt; i.name !== item.name
-        );
-      } else {
-        state.selectedItems.push(item);
-      }
-      state.selectedItemsLength = state.selectedItems.length;
-    },
-    unselectAll: (state) =&gt; {
-      state.selectedItems = [];
-      state.selectedItemsLength = 0;
-    },
+<span class="cstat-no" title="statement not covered" >      if (isItemSelected) {</span>
+<span class="cstat-no" title="statement not covered" >        state.selectedItems = state.selectedItems.filter(</span>
+<span class="cstat-no" title="statement not covered" >          (i) =&gt; i.name !== item.name</span>
+<span class="cstat-no" title="statement not covered" >        );</span>
+<span class="cstat-no" title="statement not covered" >      } else {</span>
+<span class="cstat-no" title="statement not covered" >        state.selectedItems.push(item);</span>
+<span class="cstat-no" title="statement not covered" >      }</span>
+<span class="cstat-no" title="statement not covered" >      state.selectedItemsLength = state.selectedItems.length;</span>
+<span class="cstat-no" title="statement not covered" >    },</span>
+    unselectAll: <span class="fstat-no" title="function not covered" >(state) =&gt; {</span>
+<span class="cstat-no" title="statement not covered" >      state.selectedItems = [];</span>
+<span class="cstat-no" title="statement not covered" >      state.selectedItemsLength = 0;</span>
+<span class="cstat-no" title="statement not covered" >    },</span>
   },
 });
 &nbsp;
@@ -184,7 +184,7 @@ export default itemsSlice.reducer;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2025-08-09T17:34:00.265Z
+                at 2025-08-10T10:25:49.477Z
             </div>
         <script src="../../prettify.js"></script>
         <script>
