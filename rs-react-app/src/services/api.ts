@@ -31,7 +31,7 @@ export const api = createApi({
 
     getItemByName: build.query<Card, string>({
       query: (name) => `${name.toLowerCase()}`,
-      providesTags: (result, error, name) => [
+      providesTags: (_result, _error, name) => [
         { type: 'ItemDetails', id: name },
       ],
     }),

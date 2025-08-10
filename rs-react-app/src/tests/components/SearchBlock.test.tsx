@@ -1,7 +1,3 @@
-// Rendering Tests:
-// Displays previously saved search term from localStorage on mount
-// Shows empty input when no saved term exists
-
 // User Interaction Tests:
 // Updates input value when user types
 // Saves search term to localStorage when search button is clicked
@@ -43,8 +39,12 @@ describe('TopControls Component', () => {
     expect(screen.getByRole('button', { name: /search/i })).toBeInTheDocument();
   });
 
-  // it('should displays previously saved search term from localStorage on mount', () => {
-  //   renderComponent();
-  //   //
-  // });
+  it('should displays previously saved search term from localStorage on mount', () => {
+    const pokemonName = 'pikachu';
+    localStorage.setItem('inputValue', pokemonName);
+
+    renderComponent();
+
+    expect(screen.getByPlaceholderText(/enter/i)).toHaveValue(pokemonName);
+  });
 });
