@@ -1,6 +1,6 @@
-import { Link } from 'react-router-dom';
+import Link from 'next/link';
 
-export function About() {
+export default function About() {
   return (
     <div>
       <h1>About</h1>
@@ -16,9 +16,8 @@ export function About() {
       <p>
         Learn more about React course at{' '}
         <Link
-          to="https://rs.school/courses/reactjs"
+          href="https://rs.school/courses/reactjs"
           target="_blank"
-          rel="noopener noreferrer"
           className="text-blue-500 hover:underline"
         >
           RS School React course

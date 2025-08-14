@@ -1,3 +1,5 @@
+'use client';
+
 import { createContext, useReducer, useState } from 'react';
 import type { AppState } from '../../types/app/appState';
 import { useLocalStorage } from '../../utils/useLocalStorage';

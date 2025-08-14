@@ -8,7 +8,7 @@ export default function Header() {
         <NavLinkItem to="/">Home</NavLinkItem>
         <NavLinkItem to="/about">About</NavLinkItem>
       </nav>
-      <ThemeToggle />
+      {/* <ThemeToggle /> */}
     </header>
   );
 }
