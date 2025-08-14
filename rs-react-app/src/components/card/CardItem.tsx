@@ -25,7 +25,7 @@ export function CardItem(card: Card) {
       className="hover:bg-gray-100 dark:hover:bg-gray-800 p-2 cursor-pointer "
     >
       <input
-        onClick={(e) => {
+        onChange={(e) => {
           e.stopPropagation();
           dispatch(toggleSelect(card));
         }}
