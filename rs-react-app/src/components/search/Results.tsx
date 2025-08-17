@@ -7,7 +7,10 @@ import { useGetItemByNameQuery, useGetItemsQuery } from '../../services/api';
 import { useEffect, useState } from 'react';
 import { useAppContext } from '../../context/app/useAppContext';
 import { useDetailsContext } from '../../context/details/useDetailsContext';
+import { useTranslations } from 'next-intl';
+
 function Results() {
+  const t = useTranslations('Results');
   const { isDetailsShown } = useDetailsContext();
   const {
     state,
@@ -58,9 +61,9 @@ function Results() {
     <div className="min-h-90 grid md:grid-cols-2  gap-4  ">
       <section>
         <div className="mt-4">
-          <Button onClick={handleRefresh}>Refresh 🔃</Button>
+          <Button onClick={handleRefresh}>{t('refresh')} 🔃</Button>
         </div>
-        <h2 className="dark:text-white">Results</h2>
+        <h2 className="dark:text-white">{t('title')}</h2>
         <div className="wrapper">
           {loading && <Loading />}
           {errorMessage && <ErrorElement error={errorMessage} />}
@@ -69,8 +72,8 @@ function Results() {
 
         {listData?.results.length && !itemData && (
           <div className="buttons-wrap">
-            <Button onClick={handlePrevClick}>Prev</Button>
-            <Button onClick={handleNextClick}>Next</Button>
+            <Button onClick={handlePrevClick}>{t('prev')}</Button>
+            <Button onClick={handleNextClick}>{t('next')}</Button>
           </div>
         )}
       </section>

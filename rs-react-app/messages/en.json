@@ -1,0 +1,55 @@
+{
+  "Header": {
+    "home": "Home",
+    "about": "About"
+  },
+  "About": {
+    "imageAlt": "About Image",
+    "title": "About",
+    "author": "Application author:",
+    "authorName": "Iuliia Barinova",
+    "stack": "Author's stack: React, TypeScript, Redux, HTML, CSS, JavaScript.",
+    "funFact": "Fun fact: I once debugged my code with rubber ducks and cookies—both worked, but the cookies disappeared faster!",
+    "learnMore": "Learn more about React course at",
+    "courseLinkText": "RS School React course"
+  },
+  "NotFound": {
+    "message": "The page you are looking for does not exist.",
+    "goHome": "Go back to Home"
+  },
+  "metadata": {
+    "title": "Find Pokemon App",
+    "description": "A simple app to find and view details about Pokemon"
+  },
+  "SearchBlock": {
+    "title": "Find a pokemon!",
+    "inputPlaceholder": "Enter pokemon name",
+    "button": "Search"
+  },
+  "Results": {
+    "refresh": "Refresh",
+    "title": "Results",
+    "prev": "Prev",
+    "next": "Next"
+  },
+  "Flyout": {
+    "unselectAll": "Unselect All",
+    "selectedItems": " items are selected",
+    "download": "Download"
+  },
+  "Details": {
+    "title": "Details",
+    "closeButton": "Close details",
+    "pokemon": "Pokemon:",
+    "abilities": "Pokemon Abilities:"
+  },
+  "language": {
+    "label": "Language",
+    "ru": "Русский",
+    "en": "English"
+  },
+  "theme": {
+    "light": "Light",
+    "dark": "Dark"
+  }
+}

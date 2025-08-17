@@ -3,6 +3,7 @@ import { Button } from '../button/Button';
 import { unselectAll } from '../../store/itemsSlice';
 import type { RootState } from '../../store/store';
 import { downloadCSV } from '../../utils/downloadCSV';
+import { useTranslations } from 'next-intl';
 
 export default function FlyOut() {
   const dispatch = useDispatch();
@@ -10,6 +11,8 @@ export default function FlyOut() {
     (state: RootState) => state.items.selectedItemsLength
   );
   const items = useSelector((state: RootState) => state.items.selectedItems);
+
+  const t = useTranslations('Flyout');
 
   const defaultClasses =
     'fixed bg-gray-100 dark:bg-gray-800 shadow-lg p-4 bottom-0 right-0 opacity-0 transition-opacity duration-300 z-50 flex flex-col sm:flex-row gap-2 justify-between w-full invisible';
@@ -33,10 +36,14 @@ export default function FlyOut() {
 
   return (
     <div id="flyout" className={className}>
-      <Button onClick={() => dispatch(unselectAll())}>Unselect All</Button>
-      <div>{itemsLength} items are selected</div>
+      <Button onClick={() => dispatch(unselectAll())}>
+        {t('unselectAll')}
+      </Button>
+      <div>
+        {itemsLength} {t('selectedItems', { count: itemsLength })}
+      </div>
 
-      <Button onClick={(e) => handleClick(e)}>Download</Button>
+      <Button onClick={(e) => handleClick(e)}>{t('download')}</Button>
     </div>
   );
 }
