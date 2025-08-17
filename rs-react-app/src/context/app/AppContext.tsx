@@ -6,15 +6,10 @@ import { useLocalStorage } from '../../utils/useLocalStorage';
 import { COUNT_PER_PAGE } from './constants';
 import { reducer } from './reducer';
 
-const getInitialPage = () => {
-  const fromStorage = localStorage.getItem('page');
-  return fromStorage ? Number(fromStorage) : 1;
-};
-
 const initialState: AppState = {
   prevLink: null,
   nextLink: null,
-  currentPage: getInitialPage(),
+  currentPage: 1,
   countPerPage: COUNT_PER_PAGE,
   count: 0,
 };

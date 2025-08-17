@@ -1,7 +1,7 @@
 import { ClientOnly } from './client';
 
-export function generateStaticParams() {
-  return [{ slug: [''] }];
+export async function generateStaticParams() {
+  return [{ slug: ['/'] }];
 }
 
 export default function Page() {

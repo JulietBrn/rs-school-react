@@ -1,5 +1,4 @@
 import { useEffect } from 'react';
-// import { useSearchParams } from 'react-router-dom';
 import { Results } from './components/search/Results';
 import { TopControls } from './components/search/SearchBlock';
 import { DetailsProvider } from './context/details/DetailsContext';
