@@ -1,3 +1,5 @@
+'use client';
+
 import { type MouseEvent } from 'react';
 import { useLocalStorage } from '../../utils/useLocalStorage';
 import { Button } from '../button/Button';

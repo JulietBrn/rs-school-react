@@ -22,7 +22,7 @@ export default function CardItemDetails() {
           <div>
             {' '}
             <button
-              title={t('closeDetails')}
+              title={t('closeButton')}
               className="bg-pink-300 dark:bg-pink-600  py-1 px-2 cursor-pointer"
               onClick={() => hideDetails()}
             >

@@ -1,7 +1,10 @@
+'use client';
+
 import { useEffect, useState } from 'react';
 
 export function useLocalStorage(key: string, defaultValue = '') {
-  const [storedValue, setStoredValue] = useState(() => {
+  const [storedValue, setStoredValue] = useState<string>(() => {
+    if (typeof window === 'undefined') return defaultValue;
     return localStorage.getItem(key) || defaultValue;
   });
 
@@ -15,7 +18,9 @@ export function useLocalStorage(key: string, defaultValue = '') {
   }
 
   useEffect(() => {
-    localStorage.setItem(key, storedValue);
+    if (typeof window !== 'undefined') {
+      localStorage.setItem(key, storedValue);
+    }
   }, [key, storedValue]);
 
   return { storedValue, setValue, removeValue };
