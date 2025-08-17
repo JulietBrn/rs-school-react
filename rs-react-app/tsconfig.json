@@ -2,9 +2,7 @@
   "compilerOptions": {
     "tsBuildInfoFile": "./node_modules/.tmp/tsconfig.node.tsbuildinfo",
     "target": "ES2023",
-    "lib": [
-      "ES2023"
-    ],
+    "lib": ["ES2023", "dom"],
     "module": "ESNext",
     "skipLibCheck": true,
     "esModuleInterop": true,
@@ -38,7 +36,5 @@
     "./src",
     ".next/types/**/*.ts"
   ],
-  "exclude": [
-    "./node_modules"
-  ]
+  "exclude": ["./node_modules"]
 }

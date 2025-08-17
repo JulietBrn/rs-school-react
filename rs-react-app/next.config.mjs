@@ -1,4 +1,7 @@
 /** @type {import('next').NextConfig} */
+
+import createNextIntlPlugin from 'next-intl/plugin';
+
 const nextConfig = {
   eslint: {
     ignoreDuringBuilds: true,
@@ -7,4 +10,6 @@ const nextConfig = {
   distDir: './dist', // Changes the build output directory to `./dist/`.
 };
 
-export default nextConfig;
+const withNextIntl = createNextIntlPlugin();
+
+export default withNextIntl(nextConfig);

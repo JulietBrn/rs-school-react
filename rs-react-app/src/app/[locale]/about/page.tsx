@@ -1,36 +1,36 @@
 import Image from 'next/image';
 import Link from 'next/link';
+import { useTranslations } from 'next-intl';
 
 export default function About() {
+  const t = useTranslations('About');
+
   return (
     <div className="grid md:grid-cols-2 gap-4 ">
       <Image
         src="/me.jpg"
-        alt="About Image"
+        alt={t('imageAlt')}
         priority={true}
         width={500}
         height={350}
       />
 
       <div className="content">
-        <h1>About</h1>
+        <h1>{t('title')}</h1>
         <p>
-          Application author: <strong>Iuliia Barinova</strong>
+          {t('author')} <strong>{t('authorName')}</strong>
         </p>
-        <p>Author's stack: React, TypeScript, Redux, HTML, CSS, JavaScript.</p>
-        <p>
-          Fun fact: I once debugged my code with rubber ducks and cookies—both
-          worked, but the cookies disappeared faster!
-        </p>
+        <p>{t('stack')}</p>
+        <p>{t('funFact')}</p>
 
         <p>
-          Learn more about React course at{' '}
+          {t('learnMore')}{' '}
           <Link
             href="https://rs.school/courses/reactjs"
             target="_blank"
             className="text-blue-500 hover:underline"
           >
-            RS School React course
+            {t('courseLinkText')}
           </Link>
         </p>
       </div>
