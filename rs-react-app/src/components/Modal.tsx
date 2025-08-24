@@ -32,15 +32,17 @@ export default function Modal({
       <div
         role="dialog"
         aria-modal="true"
-        className="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-white p-4 rounded shadow-lg w-3xs"
+        className="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-white p-4 rounded shadow-lg w-3xs overflow-y-auto max-h-[90dvh]"
       >
+        <div className="flex justify-end">
+          <button
+            className="bg-pink-500 text-white p-0.5 rounded cursor-pointer"
+            onClick={onClose}
+          >
+            X
+          </button>
+        </div>
         {children}
-        <button
-          className="bg-pink-500 text-white p-2 rounded w-full cursor-pointer"
-          onClick={onClose}
-        >
-          Close
-        </button>
       </div>
     </>,
     modalRoot

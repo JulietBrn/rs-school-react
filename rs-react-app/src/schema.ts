@@ -40,7 +40,7 @@ const schema = z
     gender: z.enum([Gender.female, Gender.male, Gender.other]),
 
     terms: z.boolean().refine((val) => val === true, {
-      message: 'You must accept the terms and conditions',
+      message: 'You must accept the terms',
     }),
 
     // picture: z
