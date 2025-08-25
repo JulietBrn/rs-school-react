@@ -6,7 +6,6 @@ export const Gender = {
 
 export type Gender = (typeof Gender)[keyof typeof Gender];
 
-
 export type Form = {
   name: string;
   age: string;

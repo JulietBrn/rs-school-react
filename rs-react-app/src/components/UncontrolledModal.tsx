@@ -66,7 +66,12 @@ export default function UncontrolledModal({
 
         {/* Age */}
         <label htmlFor="age">Age</label>
-        <input type="number" id="age" name="age" className={INPUT_CLASS} />
+        <input
+          type="number"
+          id="age"
+          name="age"
+          className={INPUT_CLASS}
+        />
         {errors.age && <ErrorMessage message={errors.age} />}
 
         {/* Email */}
@@ -105,7 +110,7 @@ export default function UncontrolledModal({
 
         {/* Gender */}
         <label htmlFor="gender">Gender</label>
-        <select id="gender" name="gender" className={INPUT_CLASS}>
+        <select id="gender" name="gender" className={INPUT_CLASS} >
           <option value={Gender.female}>Female</option>
           <option value={Gender.male}>Male</option>
           <option value={Gender.other}>Other</option>
@@ -114,7 +119,11 @@ export default function UncontrolledModal({
 
         {/* Checkbox */}
         <label className="block mb-4 ">
-          <input type="checkbox" name="terms" className="mr-2 cursor-pointer" />
+          <input
+            type="checkbox"
+            name="terms"
+            className="mr-2 cursor-pointer"
+          />
           I accept the terms and conditions
         </label>
         {errors.terms && <ErrorMessage message={errors.terms} />}
