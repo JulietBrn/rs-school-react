@@ -1,5 +1,5 @@
 import React from 'react';
-import { Gender } from './types';
+import { Gender, type Form } from './types';
 import Modal from './Modal';
 import ErrorMessage from './ErrorMessage';
 import { useForm } from 'react-hook-form';
@@ -13,7 +13,7 @@ export default function ReactHookModal({
   onSubmit,
 }: {
   setOpenModal: React.Dispatch<React.SetStateAction<openModal>>;
-  onSubmit: (data: unknown) => void;
+  onSubmit: (data: Form) => void;
 }) {
   const {
     register,

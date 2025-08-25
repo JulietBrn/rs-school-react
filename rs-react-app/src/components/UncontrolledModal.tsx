@@ -3,7 +3,7 @@ import type { openModal } from './Forms';
 import { BUTTON_CLASS, INPUT_CLASS } from './styleConst';
 import Modal from './Modal';
 import { schema } from '../schema';
-import { Gender } from './types';
+import { Gender, type Form } from './types';
 import ErrorMessage from './ErrorMessage';
 
 export default function UncontrolledModal({
@@ -11,7 +11,7 @@ export default function UncontrolledModal({
   onSubmit,
 }: {
   setOpenModal: React.Dispatch<React.SetStateAction<openModal>>;
-  onSubmit: (data: unknown) => void;
+  onSubmit: (data: Form) => void;
 }) {
   const [errors, setErrors] = React.useState<Record<string, string>>({});
 
