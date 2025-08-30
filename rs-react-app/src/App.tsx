@@ -1,7 +1,9 @@
+import Emission from './pages/Emission';
+
 function App() {
   return (
     <>
-      <h1>Hello World</h1>
+      <Emission />
     </>
   );
 }
