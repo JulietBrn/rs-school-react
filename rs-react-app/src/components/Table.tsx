@@ -1,4 +1,4 @@
-import { use, useEffect, useState } from 'react';
+import { use, useCallback, useEffect, useMemo, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import type { CountriesResponse, sortOrder } from '@interfaces/types';
 import { URL_COUNTRIES } from '@constants/url';
@@ -30,12 +30,24 @@ function Table() {
     dispatch(setCountryNames(Object.keys(data)));
   }, []);
 
-  function handleClick() {
+  const handleClick = useCallback(() => {
     setNameSortValue((nameSortValue) =>
       nameSortValue === 'asc' ? 'desc' : 'asc'
     );
     dispatch(sortByName(nameSortValue));
-  }
+  }, [nameSortValue]);
+
+  const rows = useMemo(
+    () =>
+      countryNames.map((countryName) => (
+        <TableRow
+          key={countryName}
+          countryName={countryName}
+          country={countries[countryName]}
+        />
+      )),
+    [countryNames, countries]
+  );
 
   return (
     <div className="overflow-auto">
@@ -55,15 +67,7 @@ function Table() {
             <th>CO2 per Capita</th>
           </tr>
         </thead>
-        <tbody>
-          {countryNames.map((countryName) => (
-            <TableRow
-              key={countryName}
-              countryName={countryName}
-              country={countries[countryName]}
-            />
-          ))}
-        </tbody>
+        <tbody>{rows}</tbody>
       </table>
     </div>
   );
