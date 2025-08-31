@@ -11,7 +11,6 @@ function getCountries(): Promise<CountriesResponse> {
 
 function Table() {
   const data = use(getCountries());
-  const countries = Object.values(data);
   const countryNames = Object.keys(data);
 
   return (
@@ -27,12 +26,11 @@ function Table() {
           </tr>
         </thead>
         <tbody>
-          {countries.map((country, index) => (
+          {countryNames.map((countryName) => (
             <TableRow
-              key={country.iso_code}
-              country={country}
-              countryNames={countryNames}
-              index={index}
+              key={countryName}
+              countryName={countryName}
+              country={data[countryName]}
             />
           ))}
         </tbody>
