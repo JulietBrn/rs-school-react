@@ -5,6 +5,8 @@ import type { CountriesResponse } from './types';
 import { useDispatch, useSelector } from 'react-redux';
 import { setCountries, setCountryNames, sortByName } from '../store/dataSlice';
 import { type RootState } from '../store/store';
+import Filter from './Filter';
+import Search from './Search';
 
 const countriesPromise = fetch(URL).then((res) => res.json());
 
@@ -39,6 +41,9 @@ function Table() {
 
   return (
     <div className="overflow-auto">
+      <Search />
+      <Filter />
+
       <table className="min-w-lg">
         <thead className="bg-gray-200 sticky top-0">
           <tr>

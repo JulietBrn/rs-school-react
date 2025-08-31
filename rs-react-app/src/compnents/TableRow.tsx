@@ -20,10 +20,10 @@ export default function TableRow({
         {population || NONE_VALUE}
       </td>
       <td className={!co2 ? 'text-red-500' : ''}>
-        {co2 > 0 ? co2.toFixed(4) : NONE_VALUE}
+        {!isNaN(co2) ? co2.toFixed(4) : NONE_VALUE}
       </td>
       <td className={!co2_per_capita ? 'text-red-500' : ''}>
-        {co2_per_capita > 0 ? co2_per_capita.toFixed(4) : NONE_VALUE}
+        {!isNaN(co2_per_capita) ? co2_per_capita.toFixed(4) : NONE_VALUE}
       </td>
     </tr>
   );

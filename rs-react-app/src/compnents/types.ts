@@ -26,4 +26,13 @@ interface CountryData {
 }
 type CountriesResponse = Record<string, CountryData>;
 
-export type { CountryData, CountriesResponse };
+type region =
+  | 'All'
+  | 'Africa'
+  | 'Asia'
+  | 'Europe'
+  | 'North America'
+  | 'Oceania'
+  | 'South America';
+
+export type { CountryData, CountriesResponse, region };
