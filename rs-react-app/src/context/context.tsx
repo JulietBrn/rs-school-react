@@ -1,4 +1,10 @@
-import React, { createContext, useState, type ReactNode } from 'react';
+import React, {
+  createContext,
+  useCallback,
+  useMemo,
+  useState,
+  type ReactNode,
+} from 'react';
 import { useDispatch } from 'react-redux';
 import { searchByName } from '@store/dataSlice';
 
@@ -15,21 +21,30 @@ const SearchProvider = ({ children }: { children: ReactNode }) => {
   const dispatch = useDispatch();
   const [inputValue, setInputValue] = useState('');
 
-  function onSubmit(e: React.FormEvent) {
-    e.preventDefault();
-    dispatch(searchByName(inputValue));
-  }
+  const onSubmit = useCallback(
+    (e: React.FormEvent) => {
+      e.preventDefault();
+      dispatch(searchByName(inputValue));
+    },
+    [dispatch, inputValue]
+  );
 
-  function clearInput() {
+  const clearInput = useCallback(() => {
     setInputValue('');
-  }
+  }, []);
+
+  const value = useMemo(
+    () => ({
+      inputValue,
+      setInputValue,
+      onSubmit,
+      clearInput,
+    }),
+    [inputValue, onSubmit, clearInput]
+  );
 
   return (
-    <SearchContext.Provider
-      value={{ inputValue, setInputValue, onSubmit, clearInput }}
-    >
-      {children}
-    </SearchContext.Provider>
+    <SearchContext.Provider value={value}>{children}</SearchContext.Provider>
   );
 };
 

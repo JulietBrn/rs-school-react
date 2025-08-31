@@ -1,7 +1,8 @@
 import { NONE_VALUE } from '@constants/value';
 import type { CountryData } from '@interfaces/types';
+import { memo } from 'react';
 
-export default function TableRow({
+const TableRow = memo(function TableRow({
   country,
   countryName,
 }: {
@@ -26,4 +27,6 @@ export default function TableRow({
       </td>
     </tr>
   );
-}
+});
+
+export default TableRow;
