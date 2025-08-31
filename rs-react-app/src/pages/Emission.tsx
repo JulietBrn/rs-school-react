@@ -1,11 +1,18 @@
 import { Suspense } from 'react';
-import Loading from '../compnents/Loading';
-import Table from '../compnents/Table';
+import Loading from '@components/Loading';
+import Table from '@components/Table';
+import Search from '@components/Search';
+import Filter from '@components/Filter';
+// import Filter from
 
 export default function Emission() {
   return (
     <section>
       <h2>CO2 emissions</h2>
+
+      <Search />
+      <Filter />
+
       <Suspense fallback={<Loading />}>
         <Table />
       </Suspense>

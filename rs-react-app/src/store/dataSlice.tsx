@@ -1,6 +1,6 @@
 import { createSlice, type PayloadAction } from '@reduxjs/toolkit';
-import type { CountriesResponse, region } from '../compnents/types';
-import { REGIONS } from '../compnents/constants';
+import type { CountriesResponse, region, sortOrder } from '@interfaces/types';
+import { REGIONS } from '@constants/regions';
 
 const initialState: CountriesSliceState = {
   countries: {},
@@ -24,7 +24,7 @@ const countriesSlice = createSlice({
       state.countryNames = action.payload;
     },
 
-    sortByName: (state, action: PayloadAction<'asc' | 'desc' | null>) => {
+    sortByName: (state, action: PayloadAction<sortOrder | null>) => {
       state.countryNames.sort((a, b) => {
         if (action.payload === 'asc') {
           return a.localeCompare(b);

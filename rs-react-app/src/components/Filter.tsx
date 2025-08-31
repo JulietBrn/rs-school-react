@@ -1,8 +1,8 @@
-import type { region } from './types';
 import { useDispatch } from 'react-redux';
-import { filterByRegion } from '../store/dataSlice';
-import { REGIONS } from './constants';
-import { useSearchContext } from '../context/useContext';
+import type { region } from '@interfaces/types';
+import { REGIONS } from '@constants/regions';
+import { filterByRegion } from '@store/dataSlice';
+import { useSearchContext } from '@context/useContext';
 
 export default function Filter() {
   const dispatch = useDispatch();

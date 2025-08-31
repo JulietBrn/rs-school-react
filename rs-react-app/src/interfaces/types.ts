@@ -31,8 +31,10 @@ type region =
   | 'Africa'
   | 'Asia'
   | 'Europe'
-  | 'North America'
+  | 'NorthAmerica'
   | 'Oceania'
-  | 'South America';
+  | 'SouthAmerica';
 
-export type { CountryData, CountriesResponse, region };
+type sortOrder = 'asc' | 'desc';
+
+export type { CountryData, CountriesResponse, region, sortOrder };

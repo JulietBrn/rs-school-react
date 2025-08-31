@@ -1,10 +1,6 @@
-import type { region } from './types';
+import type { region } from '@interfaces/types';
 
-const NONE_VALUE = 'N/A';
-const URL =
-  'https://nyc3.digitaloceanspaces.com/owid-public/data/co2/owid-co2-data.json';
-
-const AFRICA_REGION = [
+const AFRICA_REGIONS = [
   'Algeria',
   'Angola',
   'Benin',
@@ -61,7 +57,7 @@ const AFRICA_REGION = [
   'Zimbabwe',
 ];
 
-const ASIA_REGION = [
+const ASIA_REGIONS = [
   'Afghanistan',
   'Armenia',
   'Azerbaijan',
@@ -110,7 +106,7 @@ const ASIA_REGION = [
   'Yemen',
 ];
 
-const EUROPE_REGION = [
+const EUROPE_REGIONS = [
   'Albania',
   'Andorra',
   'Armenia',
@@ -163,7 +159,7 @@ const EUROPE_REGION = [
   'Vatican City',
 ];
 
-const OCEANIA_REGION = [
+const OCEANIA_REGIONS = [
   'Australia',
   'Fiji',
   'Kiribati',
@@ -180,9 +176,9 @@ const OCEANIA_REGION = [
   'Vanuatu',
 ];
 
-const NORTH_AMERICA_REGION = ['Canada', 'United States', 'Mexico'];
+const NORTH_AMERICA_REGIONS = ['Canada', 'United States', 'Mexico'];
 
-const SOUTH_AMERICA_REGION = [
+const SOUTH_AMERICA_REGIONS = [
   'Argentina',
   'Bolivia',
   'Brazil',
@@ -198,21 +194,21 @@ const SOUTH_AMERICA_REGION = [
 ];
 
 const REGIONS: Record<region, string[]> = {
-  Africa: AFRICA_REGION,
-  Asia: ASIA_REGION,
-  Europe: EUROPE_REGION,
-  Oceania: OCEANIA_REGION,
-  'North America': NORTH_AMERICA_REGION,
-  'South America': SOUTH_AMERICA_REGION,
+  Africa: AFRICA_REGIONS,
+  Asia: ASIA_REGIONS,
+  Europe: EUROPE_REGIONS,
+  Oceania: OCEANIA_REGIONS,
+  NorthAmerica: NORTH_AMERICA_REGIONS,
+  SouthAmerica: SOUTH_AMERICA_REGIONS,
 
   All: [
-    ...AFRICA_REGION,
-    ...ASIA_REGION,
-    ...EUROPE_REGION,
-    ...OCEANIA_REGION,
-    ...NORTH_AMERICA_REGION,
-    ...SOUTH_AMERICA_REGION,
+    ...AFRICA_REGIONS,
+    ...ASIA_REGIONS,
+    ...EUROPE_REGIONS,
+    ...OCEANIA_REGIONS,
+    ...NORTH_AMERICA_REGIONS,
+    ...SOUTH_AMERICA_REGIONS,
   ],
 };
 
-export { NONE_VALUE, URL, REGIONS };
+export { REGIONS };

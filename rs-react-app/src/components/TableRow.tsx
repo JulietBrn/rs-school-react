@@ -1,5 +1,5 @@
-import { NONE_VALUE } from './constants';
-import type { CountryData } from './types';
+import { NONE_VALUE } from '@constants/value';
+import type { CountryData } from '@interfaces/types';
 
 export default function TableRow({
   country,

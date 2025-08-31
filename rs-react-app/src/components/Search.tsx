@@ -1,4 +1,4 @@
-import { useSearchContext } from '../context/useContext';
+import { useSearchContext } from '@context/useContext';
 
 export default function Search() {
   const { inputValue, setInputValue, onSubmit } = useSearchContext();

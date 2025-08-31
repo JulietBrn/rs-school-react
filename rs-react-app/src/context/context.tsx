@@ -1,6 +1,6 @@
 import React, { createContext, useState, type ReactNode } from 'react';
 import { useDispatch } from 'react-redux';
-import { searchByName } from '../store/dataSlice';
+import { searchByName } from '@store/dataSlice';
 
 interface SearchContextProps {
   inputValue: string;

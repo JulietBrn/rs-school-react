@@ -1,14 +1,12 @@
 import { use, useEffect, useState } from 'react';
-import TableRow from './TableRow';
-import { URL } from './constants';
-import type { CountriesResponse } from './types';
 import { useDispatch, useSelector } from 'react-redux';
-import { setCountries, setCountryNames, sortByName } from '../store/dataSlice';
-import { type RootState } from '../store/store';
-import Filter from './Filter';
-import Search from './Search';
+import type { CountriesResponse, sortOrder } from '@interfaces/types';
+import { URL_COUNTRIES } from '@constants/url';
+import TableRow from '@components/TableRow';
+import { setCountries, setCountryNames, sortByName } from '@store/dataSlice';
+import { type RootState } from '@store/store';
 
-const countriesPromise = fetch(URL).then((res) => res.json());
+const countriesPromise = fetch(URL_COUNTRIES).then((res) => res.json());
 
 function getCountries(): Promise<CountriesResponse> {
   return countriesPromise;
@@ -16,9 +14,7 @@ function getCountries(): Promise<CountriesResponse> {
 
 function Table() {
   const dispatch = useDispatch();
-  const [nameSortValue, setNameSortValue] = useState<'asc' | 'desc' | null>(
-    null
-  );
+  const [nameSortValue, setNameSortValue] = useState<sortOrder | null>(null);
 
   const data = use(getCountries());
   dispatch(setCountries(data));
@@ -35,15 +31,14 @@ function Table() {
   }, []);
 
   function handleClick() {
-    setNameSortValue(nameSortValue === 'asc' ? 'desc' : 'asc');
+    setNameSortValue((nameSortValue) =>
+      nameSortValue === 'asc' ? 'desc' : 'asc'
+    );
     dispatch(sortByName(nameSortValue));
   }
 
   return (
     <div className="overflow-auto">
-      <Search />
-      <Filter />
-
       <table className="min-w-lg">
         <thead className="bg-gray-200 sticky top-0">
           <tr>
