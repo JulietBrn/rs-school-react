@@ -3,8 +3,9 @@ import type { region } from '@interfaces/types';
 import { REGIONS } from '@constants/regions';
 import { filterByRegion } from '@store/dataSlice';
 import { useSearchContext } from '@context/useContext';
+import { memo } from 'react';
 
-export default function Filter() {
+const Filter = memo(function Filter() {
   const dispatch = useDispatch();
   const { clearInput } = useSearchContext();
 
@@ -27,4 +28,6 @@ export default function Filter() {
       ))}
     </select>
   );
-}
+});
+
+export default Filter;

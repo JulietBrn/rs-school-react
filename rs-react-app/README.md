@@ -1,69 +1,45 @@
-# React + TypeScript + Vite
+## Performance Metrics Before Sorting Operations
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+### Sorting
 
-Currently, two official plugins are available:
+- **Commit Duration:** 5.3 seconds
+- **Render Duration:** 102.4 milliseconds
+  ![Flame Graph](public/sorting/before/flame.png)
+  ![Ranked Chart](public/sorting/before/ranked.png)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+### Filter
 
-## Expanding the ESLint configuration
+- **Commit Duration:** 16.8 seconds
+- **Render Duration:** 126.1 milliseconds
+  ![Flame Graph](public/filter/before/flame.png)
+  ![Ranked Chart](public/filter/before/ranked.png)
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+### Search
 
-```js
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+- **Commit Duration:** 2.9 seconds
+- **Render Duration:** 2.3 milliseconds
+  ![Flame Graph](public/search/before/flame.png)
+  ![Ranked Chart](public/search/before/ranked.png)
 
-      // Remove tseslint.configs.recommended and replace with this
-      ...tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      ...tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      ...tseslint.configs.stylisticTypeChecked,
+## Performance Metrics After Sorting Operations
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+### Sorting
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+- **Commit Duration:** 1.6 seconds
+- **Render Duration:** 15.3 milliseconds
+  ![Flame Graph](public/sorting/after/flame.png)
+  ![Ranked Chart](public/sorting/after/ranked.png)
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+### Filter
 
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+- **Commit Duration:** 5.6 seconds
+- **Render Duration:** 122 milliseconds
+  ![Flame Graph](public/filter/after/flame.png)
+  ![Ranked Chart](public/filter/after/ranked.png)
+
+### Search
+
+- **Commit Duration:** 3.4 seconds
+- **Render Duration:** 1.5 milliseconds
+  ![Flame Graph](public/search/after/flame.png)
+  ![Ranked Chart](public/search/after/ranked.png)
