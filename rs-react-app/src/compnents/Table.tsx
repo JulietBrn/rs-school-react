@@ -1,7 +1,10 @@
-import React, { use } from 'react';
+import React, { use, useEffect, useState } from 'react';
 import TableRow from './TableRow';
 import { URL } from './constants';
 import type { CountriesResponse } from './types';
+import { useDispatch, useSelector } from 'react-redux';
+import { setCountries, setCountryNames, sortByName } from '../store/dataSlice';
+import { type RootState } from '../store/store';
 
 const countriesPromise = fetch(URL).then((res) => res.json());
 
@@ -10,15 +13,42 @@ function getCountries(): Promise<CountriesResponse> {
 }
 
 function Table() {
+  const dispatch = useDispatch();
+  const [nameSortValue, setNameSortValue] = useState<'asc' | 'desc' | null>(
+    null
+  );
+
   const data = use(getCountries());
-  const countryNames = Object.keys(data);
+  dispatch(setCountries(data));
+
+  const countries = useSelector(
+    (state: RootState) => state.countries.countries
+  );
+  const countryNames = useSelector(
+    (state: RootState) => state.countries.countryNames
+  );
+
+  useEffect(() => {
+    dispatch(setCountryNames(Object.keys(data)));
+  }, []);
+
+  function handleClick() {
+    setNameSortValue(nameSortValue === 'asc' ? 'desc' : 'asc');
+    dispatch(sortByName(nameSortValue));
+  }
 
   return (
     <div className="overflow-auto">
       <table className="min-w-lg">
         <thead className="bg-gray-200 sticky top-0">
           <tr>
-            <th>Name</th>
+            <th
+              className="button cursor-pointer hover:bg-amber-100"
+              onClick={handleClick}
+            >
+              Name
+              {nameSortValue === 'asc' ? ' ▲' : ' ▼'}
+            </th>
             <th>Year</th>
             <th>Population</th>
             <th>CO2</th>
@@ -30,7 +60,7 @@ function Table() {
             <TableRow
               key={countryName}
               countryName={countryName}
-              country={data[countryName]}
+              country={countries[countryName]}
             />
           ))}
         </tbody>
