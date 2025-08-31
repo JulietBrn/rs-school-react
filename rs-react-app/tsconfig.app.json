@@ -7,6 +7,14 @@
     "module": "ESNext",
     "skipLibCheck": true,
     "types": ["vitest/globals"],
+    "baseUrl": "src",
+    "paths": {
+      "@store/*": ["store/*"],
+      "@context/*": ["context/*"],
+      "@components/*": ["components/*"],
+      "@constants/*": ["constants/*"],
+      "@interfaces/*": ["interfaces/*"]
+    },
 
     /* Bundler mode */
     "moduleResolution": "bundler",

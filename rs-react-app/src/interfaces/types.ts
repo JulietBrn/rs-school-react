@@ -26,4 +26,15 @@ interface CountryData {
 }
 type CountriesResponse = Record<string, CountryData>;
 
-export type { CountryData, CountriesResponse };
+type region =
+  | 'All'
+  | 'Africa'
+  | 'Asia'
+  | 'Europe'
+  | 'NorthAmerica'
+  | 'Oceania'
+  | 'SouthAmerica';
+
+type sortOrder = 'asc' | 'desc';
+
+export type { CountryData, CountriesResponse, region, sortOrder };
