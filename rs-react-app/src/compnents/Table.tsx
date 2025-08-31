@@ -1,4 +1,4 @@
-import React, { use, useEffect, useState } from 'react';
+import { use, useEffect, useState } from 'react';
 import TableRow from './TableRow';
 import { URL } from './constants';
 import type { CountriesResponse } from './types';

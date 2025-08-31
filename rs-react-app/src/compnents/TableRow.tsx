@@ -1,4 +1,3 @@
-import React from 'react';
 import { NONE_VALUE } from './constants';
 import type { CountryData } from './types';
 

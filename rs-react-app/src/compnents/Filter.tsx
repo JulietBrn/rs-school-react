@@ -1,4 +1,3 @@
-import React from 'react';
 import type { region } from './types';
 import { useDispatch } from 'react-redux';
 import { filterByRegion } from '../store/dataSlice';

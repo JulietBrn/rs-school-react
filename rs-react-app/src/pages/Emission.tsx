@@ -1,4 +1,4 @@
-import React, { Suspense } from 'react';
+import { Suspense } from 'react';
 import Loading from '../compnents/Loading';
 import Table from '../compnents/Table';
 
